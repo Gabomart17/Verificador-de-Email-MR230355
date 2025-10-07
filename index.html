@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Verificador de Email</title>
+<style>
+    body {
+    font-family: sans-serif;
+    max-width: 320px;
+    margin: 50px auto;
+    background-color: #C0C9E6;
+    }
+    input {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    font-family: monospace;
+    }
+    .valid {
+    border: 2px solid #28a745;
+    }
+    .invalid {
+    border: 2px solid #dc3545;
+    }
+    p {
+    font-size: 0.9rem;
+    margin-top: 4px;
+    font-family: monospace;
+    }
+    h2{
+    background-color: #79ABE5;
+    text-align: center;
+    border-radius: 10px;
+    font-family: monospace;
+    }
+</style>
+</head>
+<body>
+    <h2>Verificador de Email</h2>
+    <input id="email" placeholder="usuario@ejemplo.com" />
+    <p id="mensaje"></p>
+    <script>
+        const emailInput = document.getElementById('email');
+        const mensaje = document.getElementById('mensaje');
+        // patron para validar un email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        emailInput.addEventListener('input', () => {
+            if (emailRegex.test(emailInput.value)) {
+                emailInput.className = 'valid';
+                mensaje.textContent = 'Email válido';
+                mensaje.style.color = '#28a745';
+            } else {
+                emailInput.className = 'invalid';
+                mensaje.textContent = 'Email inválido';
+                mensaje.style.color = '#dc3545';
+            }
+        });
+    </script>
+</body>
+</html>
